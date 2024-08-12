@@ -1,23 +1,18 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
-import { Button } from "../ui/button";
 import Collection from "./Collection";
 import Categories from "./Categories";
 import { ModeToggle } from "./ModeToggle";
 import SearchBar from "./Search";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Form } from "..";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Form } from "..";
+import Logout from "../Form/Logout";
 
 const Header = () => {
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.product.status);
+
   return (
     <div className="sticky top-0 p-4 border-b flex flex-wrap justify-between items-center space-y-4 sm:space-y-0 bg-white dark:bg-gray-900 z-50">
       <div className="flex justify-between gap-10 items-center w-full sm:w-auto">
@@ -37,22 +32,16 @@ const Header = () => {
         <Collection />
       </div>
       <div className="flex items-center gap-4 ">
-        <ShoppingCart
-          className="cursor-pointer"
-          onClick={() => navigate("/cart")}
-        />
+        {isAuthenticated ? (
+          <ShoppingCart
+            className="cursor-pointer"
+            onClick={() => navigate("/cart")}
+          />
+        ) : null}
         <ModeToggle />
-        <Dialog>
-          <DialogTrigger>
-            <Button>Get Started</Button>
-          </DialogTrigger>
-          <DialogContent>
-            <Form />
-          </DialogContent>
-        </Dialog>
+        {isAuthenticated ? <Logout /> : <Form />}
       </div>
     </div>
   );
 };
-
 export default Header;

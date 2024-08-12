@@ -5,6 +5,7 @@ import CategoriesContainer from "./CategoriesContainer";
 import NewArrivalContainer from "./NewArrivalContainer";
 import CollectionContainer from "./CollectionContainer";
 import WhyChooseUs from "./Features";
+import AuthLayout from "../components/AuthLayout/AuthLayout";
 import Form from "./Form/Form";
 export {
   Header,
@@ -14,5 +15,6 @@ export {
   NewArrivalContainer,
   CollectionContainer,
   WhyChooseUs,
+  AuthLayout,
   Form,
 };
