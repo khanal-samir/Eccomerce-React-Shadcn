@@ -5,7 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
-import { Cart, Home } from "./Pages/index.js";
+import { Cart, Checkout, Completed, Home } from "./Pages/index.js";
 import { AuthLayout } from "./components/index.js";
 
 const router = createBrowserRouter([
@@ -26,6 +26,22 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication={true}>
             <Cart />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/checkout",
+        element: (
+          <AuthLayout authentication={true}>
+            <Checkout />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/completed",
+        element: (
+          <AuthLayout authentication={true}>
+            <Completed />
           </AuthLayout>
         ),
       },

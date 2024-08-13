@@ -7,6 +7,10 @@ import CollectionContainer from "./CollectionContainer";
 import WhyChooseUs from "./Features";
 import AuthLayout from "../components/AuthLayout/AuthLayout";
 import Form from "./Form/Form";
+import PayNav from "./PaymentNav";
+import CartBody from "./CartBody";
+import ChekoutBody from "./ChekoutBody";
+import CompleteBody from "./CompleteBody";
 export {
   Header,
   Footer,
@@ -17,4 +21,8 @@ export {
   WhyChooseUs,
   AuthLayout,
   Form,
+  PayNav,
+  CartBody,
+  ChekoutBody,
+  CompleteBody,
 };
