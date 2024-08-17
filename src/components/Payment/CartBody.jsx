@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
+import { useId } from "react";
 
 const CartBody = () => {
+  const id = useId();
   return (
     <div>
       <div className="flex justify-around items-center">
-        {["Title", "Quantity", "Price", "Total"].map((title, index) => (
+        {["Title", "Quantity", "Price", "Total"].map((title) => (
           <h2
-            key={index}
+            key={id}
             className="text-xl font-light text-gray-900 dark:text-gray-300"
           >
             {title}

@@ -1,10 +1,9 @@
-import React from "react";
 import { ShoppingCart } from "lucide-react";
 import Collection from "./Collection";
 import Categories from "./Categories";
 import { ModeToggle } from "./ModeToggle";
 import SearchBar from "./Search";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Form } from "..";
 import Logout from "../Form/Logout";
@@ -26,9 +25,12 @@ const Header = () => {
       </div>
       <div className="flex flex-wrap justify-center items-center gap-6 font-normal font-sans text-slate-800 cursor-pointer">
         <Categories />
-        <h2 className="text-base font-medium text-gray-800 dark:text-gray-200">
-          New Arrival
-        </h2>
+
+        <Link to="new-arrival">
+          <h2 className="text-base font-medium text-gray-800 dark:text-gray-200">
+            New Arrival
+          </h2>
+        </Link>
         <Collection />
       </div>
       <div className="flex items-center gap-4 ">

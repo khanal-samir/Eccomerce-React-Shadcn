@@ -21,9 +21,9 @@ const PayNav = ({ second = false, third = false }) => {
             <Link
               to="/cart"
               className={`${
-                second || third
-                  ? "hover:text-black hover:dark:text-white"
-                  : "hover:text-gray-800 hover:dark:text-gray-400 text-black dark:text-white"
+                !second && !third
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "hover:text-black hover:dark:text-white text-black dark:text-white"
               }`}
             >
               Cart
@@ -36,9 +36,9 @@ const PayNav = ({ second = false, third = false }) => {
                 <Link
                   to="/checkout"
                   className={`${
-                    second
-                      ? "hover:text-black hover:dark:text-white"
-                      : "hover:text-gray-800 hover:dark:text-gray-400 text-black dark:text-white"
+                    second && !third
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "hover:text-black hover:dark:text-white text-black dark:text-white"
                   }`}
                 >
                   Checkout
@@ -52,7 +52,7 @@ const PayNav = ({ second = false, third = false }) => {
               <BreadcrumbItem>
                 <Link
                   to="/completed"
-                  className="hover:text-black hover:dark:text-white"
+                  className="text-blue-600 dark:text-blue-400"
                 >
                   Completed
                 </Link>
@@ -71,61 +71,79 @@ const PayNav = ({ second = false, third = false }) => {
 
       <div className="flex items-center justify-center">
         <div className="flex items-center">
-          <span className="flex items-center justify-center w-12 h-12 border-2 border-black text-black dark:border-white dark:text-white rounded-full">
+          <span
+            className={`flex items-center justify-center w-12 h-12 border-2 rounded-full ${
+              !second && !third
+                ? "border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400"
+                : "border-gray-300 text-gray-400 dark:border-gray-600 dark:text-gray-500"
+            }`}
+          >
             1
           </span>
-          <span className="ml-3 text-black dark:text-white font-medium">
+          <span
+            className={`ml-3 font-medium ${
+              !second && !third
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-gray-400 dark:text-gray-500"
+            }`}
+          >
             Shopping Cart
           </span>
         </div>
 
-        <div className="flex-grow border-t-2 border-black dark:border-gray-600 mx-6"></div>
+        <div
+          className={`flex-grow border-t-2 mx-6 ${
+            !second && !third
+              ? "border-blue-600 dark:border-blue-400"
+              : "border-gray-300 dark:border-gray-600"
+          }`}
+        ></div>
 
         <div className="flex items-center">
           <span
-            className={`flex items-center justify-center w-12 h-12 border-2 ${
-              second
-                ? "border-black text-black dark:border-white dark:text-white"
+            className={`flex items-center justify-center w-12 h-12 border-2 rounded-full ${
+              second && !third
+                ? "border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400"
                 : "border-gray-300 text-gray-400 dark:border-gray-600 dark:text-gray-500"
-            } rounded-full`}
+            }`}
           >
             2
           </span>
           <span
-            className={`ml-3 ${
-              second
-                ? "text-black dark:text-white"
+            className={`ml-3 font-medium ${
+              second && !third
+                ? "text-blue-600 dark:text-blue-400"
                 : "text-gray-400 dark:text-gray-500"
-            } font-medium`}
+            }`}
           >
             Checkout
           </span>
         </div>
 
         <div
-          className={`flex-grow border-t-2 ${
-            second
-              ? "border-black dark:border-gray-600"
+          className={`flex-grow border-t-2 mx-6 ${
+            second && !third
+              ? "border-blue-600 dark:border-blue-400"
               : "border-gray-300 dark:border-gray-600"
-          } mx-6`}
+          }`}
         ></div>
 
         <div className="flex items-center">
           <span
-            className={`flex items-center justify-center w-12 h-12 border-2 ${
+            className={`flex items-center justify-center w-12 h-12 border-2 rounded-full ${
               third
-                ? "border-black text-black dark:border-white dark:text-white"
+                ? "border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400"
                 : "border-gray-300 text-gray-400 dark:border-gray-600 dark:text-gray-500"
-            } rounded-full`}
+            }`}
           >
             3
           </span>
           <span
-            className={`ml-3 ${
+            className={`ml-3 font-medium ${
               third
-                ? "text-black dark:text-white"
+                ? "text-blue-600 dark:text-blue-400"
                 : "text-gray-400 dark:text-gray-500"
-            } font-medium`}
+            }`}
           >
             Completed
           </span>

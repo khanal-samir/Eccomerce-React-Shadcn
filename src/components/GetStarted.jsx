@@ -70,11 +70,11 @@ export default function GetStarted() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center min-h-fit ">
-      <Tabs defaultValue="Login" className="w-full max-w-md">
+    <div className="flex flex-row items-center justify-center min-h-fit bg-slate-200 dark:bg-slate-600 p-4">
+      <Tabs defaultValue="Signup" className="w-full max-w-md">
         <TabsList className="grid w-full grid-cols-2 mb-4">
-          <TabsTrigger value="Login">Login</TabsTrigger>
           <TabsTrigger value="Signup">Signup</TabsTrigger>
+          <TabsTrigger value="Login">Login</TabsTrigger>
         </TabsList>
         <TabsContent value="Login">
           <Card>

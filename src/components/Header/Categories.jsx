@@ -2,21 +2,21 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Link } from "react-router-dom";
 
 // Array of category objects
 const categories = [
   {
-    src: "./Jacket.svg",
-    label: "Jackets",
+    src: "/Jacket.svg",
+    label: "Jacket",
     description: "Explore our range of jackets",
   },
   {
-    src: "./Tshirt.svg",
-    label: "T-Shirts",
+    src: "/Tshirt.svg",
+    label: "T-Shirt",
     description: "Find your perfect T-shirts",
   },
   {
@@ -54,9 +54,10 @@ const Collection = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="w-80 h-auto flex flex-col bg-slate-100 dark:bg-slate-800 p-4">
-                {categories.map((category, index) => (
-                  <NavigationMenuLink
-                    key={index}
+                {categories.map((category) => (
+                  <Link
+                    to={`products/categories/${category.label.toLowerCase()}`}
+                    key={category.label}
                     className="w-full hover:opacity-50 mb-2 flex items-center"
                   >
                     <img
@@ -72,7 +73,7 @@ const Collection = () => {
                         {category.description}
                       </p>
                     </div>
-                  </NavigationMenuLink>
+                  </Link>
                 ))}
               </div>
             </NavigationMenuContent>

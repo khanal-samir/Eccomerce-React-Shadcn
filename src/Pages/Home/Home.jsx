@@ -1,6 +1,7 @@
 import {
   CategoriesContainer,
   CollectionContainer,
+  Featured,
   Hero,
   NewArrivalContainer,
   WhyChooseUs,
@@ -10,9 +11,10 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <CategoriesContainer />
       <NewArrivalContainer />
+      <CategoriesContainer />
       <CollectionContainer />
+      <Featured />
       <WhyChooseUs />
     </div>
   );

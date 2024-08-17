@@ -1,6 +1,4 @@
-import { PayNav } from "@/components";
-import React from "react";
-import { CompleteBody } from "@/components";
+import { CompleteBody, PayNav } from "@/components";
 const Completed = () => {
   return (
     <div>

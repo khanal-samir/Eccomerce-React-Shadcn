@@ -5,12 +5,23 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
-import { Cart, Checkout, Completed, Home } from "./Pages/index.js";
+import {
+  Cart,
+  Cat,
+  Checkout,
+  Coll,
+  Completed,
+  Home,
+  Product,
+  Distributor,
+  Login,
+  NewArrival,
+} from "./Pages/index.js";
 import { AuthLayout } from "./components/index.js";
 
 const router = createBrowserRouter([
   {
-    Path: "/",
+    path: "/",
     element: <App />,
     children: [
       {
@@ -20,6 +31,18 @@ const router = createBrowserRouter([
             <Home />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/new-arrival",
+        element: (
+          <AuthLayout authentication={false}>
+            <NewArrival />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
       {
         path: "/cart",
@@ -44,6 +67,40 @@ const router = createBrowserRouter([
             <Completed />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/products",
+        element: (
+          <AuthLayout authentication={false}>
+            <Product />
+          </AuthLayout>
+        ),
+        children: [
+          {
+            path: "categories",
+            element: <Cat />,
+          },
+          {
+            path: "collections",
+            element: <Coll />,
+          },
+          {
+            path: "categories/:category",
+            element: <Cat />,
+          },
+          {
+            path: "collections/:collection",
+            element: <Coll />,
+          },
+          {
+            path: "distributor",
+            element: <Distributor />,
+          },
+          {
+            path: "distributor/:seller",
+            element: <Distributor />,
+          },
+        ],
       },
     ],
   },

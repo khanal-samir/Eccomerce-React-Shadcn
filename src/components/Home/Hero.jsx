@@ -1,5 +1,4 @@
-import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -19,7 +19,10 @@ const Hero = () => {
           commodi quam consequuntur magni vero distinctio dolores cum, quas aut
           ea delectus. Nam?
         </p>
-        <Button className="w-28">Shop Now</Button>
+        <Link to="/products/collections/summer">
+          {" "}
+          <Button className="w-28">Shop Now</Button>
+        </Link>
       </div>
       <div className="hidden md:block w-1/3 ml-5">
         <Carousel>

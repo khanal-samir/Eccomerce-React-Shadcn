@@ -1,5 +1,5 @@
-import { PayNav } from "@/components";
-import { ChekoutBody } from "@/components";
+import { PayNav, ChekoutBody } from "@/components";
+
 const Checkout = () => {
   return (
     <div>

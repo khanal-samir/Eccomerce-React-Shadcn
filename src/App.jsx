@@ -1,12 +1,11 @@
-import React from "react";
 import { Header, Footer } from "./components";
 import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="flex flex-col flex-wrap ">
+    <div className="flex flex-col flex-wrap min-h-screen ">
       <Header />
-      <Outlet />
+      <Outlet className="flex-grow" />
       <Footer />
     </div>
   );

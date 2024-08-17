@@ -1,26 +1,29 @@
-import { Button } from "./ui/button";
-const NewArrivalContainer = () => {
+import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
+
+const CategoriesContainer = () => {
   return (
-    <div>
-      <div className="flex flex-col space-y-4">
-        <div className="flex justify-between items-center px-4">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-200">
-            New Arrival
-          </h1>
+    <div className="flex flex-col space-y-4">
+      <div className="flex justify-between items-center px-4">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-200">
+          Categories
+        </h1>
+        <Link to="/products/categories">
           <Button variant="link">View all</Button>
-        </div>
-        <div className="overflow-hidden">
-          <div className="flex items-center justify-evenly h-72">
-            looping new items
-            {/* {[
-            { src: "/Jacket.svg", label: "Jackets" },
-            { src: "/Tshirt.svg", label: "Tshirts" },
+        </Link>
+      </div>
+      <div className="overflow-hidden">
+        <div className="flex items-center justify-evenly h-72">
+          {[
+            { src: "/Jacket.svg", label: "Jacket" },
+            { src: "/Tshirt.svg", label: "T-shirt" },
             { src: "/Pant.svg", label: "Pants" },
             { src: "/Shoes.svg", label: "Shoes" },
             { src: "/Dress.svg", label: "Dress" },
             { src: "/Acc.svg", label: "Accessories" },
           ].map((category, index) => (
-            <div
+            <Link
+              to={`products/categories/${category.label.toLowerCase()}`}
               key={index}
               className="flex flex-col items-center space-y-2 m-4 transition-transform transform hover:scale-105 cursor-pointer"
             >
@@ -32,13 +35,12 @@ const NewArrivalContainer = () => {
               <p className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
                 {category.label}
               </p>
-            </div>
-          ))} */}
-          </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default NewArrivalContainer;
+export default CategoriesContainer;
