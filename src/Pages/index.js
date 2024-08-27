@@ -4,10 +4,12 @@ import Cart from "./Payment/Cart";
 import Checkout from "./Payment/Checkout";
 import Completed from "./Payment/Completed";
 import Product from "./Product/Product";
-import Coll from "./Product/Coll";
-import Distributor from "./Product/Distributor";
 import Cat from "./Product/Cat";
 import Login from "./Login";
+import ProductTab from "./Product/Product";
+import NotFound from "./NotFound";
+import Detail from "./Detail";
+
 export {
   Home,
   NewArrival,
@@ -15,8 +17,9 @@ export {
   Checkout,
   Completed,
   Product,
-  Coll,
   Cat,
-  Distributor,
   Login,
+  ProductTab,
+  NotFound,
+  Detail,
 };

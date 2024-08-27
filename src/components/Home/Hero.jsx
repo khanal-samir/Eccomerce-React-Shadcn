@@ -1,3 +1,4 @@
+import dbservice from "@/AppwriteConfig/DBconfig";
 import { Button } from "../ui/button";
 import {
   Carousel,
@@ -6,9 +7,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+  const products = useSelector((state) => state.product.products);
   return (
     <div className="bg-gray-200 shadow-md dark:bg-slate-700 h-96 flex gap-10 items-center px-6 md:px-10">
       <div className="w-full md:w-1/2 flex flex-col space-y-4">
@@ -27,10 +30,18 @@ const Hero = () => {
       <div className="hidden md:block w-1/3 ml-5">
         <Carousel>
           <CarouselContent className="flex ml-3">
-            <CarouselItem className="basis-1/3">Item 1</CarouselItem>
-            <CarouselItem className=" basis-1/3">Item 2</CarouselItem>
-            <CarouselItem className=" basis-1/3">Item 3</CarouselItem>
-            <CarouselItem className=" basis-1/3">Item 4</CarouselItem>
+            {products &&
+              products.map((item) =>
+                item.Collection.toLowerCase() === "summer" ? (
+                  <CarouselItem className="basis-1/3" key={item.$id}>
+                    <img
+                      src={dbservice.getFilePreview(item.imageUrl)}
+                      alt={item.Name}
+                      className="w-32 h-32 bg-cover rounded shadow-md cursor pointer "
+                    />
+                  </CarouselItem>
+                ) : null,
+              )}
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />

@@ -1,44 +1,59 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import { useEffect } from "react";
+import dbservice from "@/AppwriteConfig/DBconfig";
+import { useDispatch, useSelector } from "react-redux";
+import { allProduct } from "@/store/ProductSlice";
+
 const NewArrivalContainer = () => {
+  const products = useSelector((state) => state.product.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await dbservice.getPosts();
+      if (data) {
+        dispatch(allProduct(data.documents));
+      }
+    };
+    fetchData();
+  }, [dispatch]);
+
   return (
-    <div>
-      <div className="flex flex-col space-y-4">
-        <div className="flex justify-between items-center px-4">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-200">
-            New Arrival
-          </h1>
-          <Link to="/new-arrival">
-            <Button variant="link">View all</Button>
-          </Link>
-        </div>
-        <div className="overflow-hidden">
-          <div className="flex items-center justify-evenly h-72">
-            looping new items
-            {/* {[
-            { src: "/Jacket.svg", label: "Jackets" },
-            { src: "/Tshirt.svg", label: "Tshirts" },
-            { src: "/Pant.svg", label: "Pants" },
-            { src: "/Shoes.svg", label: "Shoes" },
-            { src: "/Dress.svg", label: "Dress" },
-            { src: "/Acc.svg", label: "Accessories" },
-          ].map((category, index) => (
+    <div className="bg-white dark:bg-gray-800 p-6">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          New Arrival
+        </h1>
+        <Link to="/new-arrival">
+          <Button variant="link">View all</Button>
+        </Link>
+      </div>
+      <div className="flex overflow-x-auto space-x-4 py-4">
+        {products?.length > 0 ? (
+          products.map((product) => (
             <div
-              key={index}
-              className="flex flex-col items-center space-y-2 m-4 transition-transform transform hover:scale-105 cursor-pointer"
+              key={product.$id}
+              className="flex-shrink-0 bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden w-48 transition-transform transform hover:scale-105 hover:shadow-lg"
             >
               <img
-                src={category.src}
-                alt={category.label}
-                className="w-16 h-16 transition-transform transform hover:scale-110"
+                src={dbservice.getFilePreview(product.imageUrl)}
+                alt={product.Name}
+                className="w-full h-32 object-cover transition-transform transform hover:scale-110"
               />
-              <p className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
-                {category.label}
-              </p>
+              <div className="p-2">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 truncate">
+                  {product.Name}
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  {product.Price} NPR
+                </p>
+              </div>
             </div>
-          ))} */}
-          </div>
-        </div>
+          ))
+        ) : (
+          <p className="text-gray-600 dark:text-gray-400">No new arrivals</p>
+        )}
       </div>
     </div>
   );

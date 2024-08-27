@@ -3,13 +3,20 @@ import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 import { Button } from "../ui/button";
 import { SearchX } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
   const handleSearchClick = () => {
-    setIsSearchVisible(!isSearchVisible);
+    setIsSearchVisible((prev) => !prev);
+  };
+
+  const handleClick = () => {
+    navigate(`/details/${input}`);
+    setInput("");
   };
 
   return (
@@ -29,6 +36,7 @@ const SearchBar = () => {
               onChange={(e) => setInput(e.target.value)}
               value={input}
             />
+            <Button onClick={handleClick}>Search</Button>
             <Button variant="outline" onClick={handleSearchClick}>
               <SearchX />
             </Button>

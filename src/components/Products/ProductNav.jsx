@@ -61,7 +61,7 @@ const ProductNav = () => {
             <>
               <BreadcrumbItem>
                 <Link
-                  to="categories"
+                  to="/products/categories"
                   className="hover:text-blue-600 hover:dark:text-blue-400"
                 >
                   Categories
@@ -89,7 +89,7 @@ const ProductNav = () => {
             <>
               <BreadcrumbItem>
                 <Link
-                  to="collections"
+                  to="/products/collections"
                   className="hover:text-blue-600 hover:dark:text-blue-400"
                 >
                   Collections

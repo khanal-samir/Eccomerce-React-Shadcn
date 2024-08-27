@@ -11,6 +11,8 @@ import Logout from "../Form/Logout";
 const Header = () => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.product.status);
+  const user = useSelector((state) => state.product.userInfo);
+  console.log(user);
 
   return (
     <div className="sticky top-0 p-4 border-b flex flex-wrap justify-between items-center space-y-4 sm:space-y-0 bg-white dark:bg-gray-900 z-50">
@@ -33,6 +35,11 @@ const Header = () => {
         </Link>
         <Collection />
       </div>
+      {user ? (
+        <h1 className="text-gray-800 dark:text-gray-300 font-sans ">
+          Welcome, <span className="font-semibold">{user.name}</span>
+        </h1>
+      ) : null}
       <div className="flex items-center gap-4 ">
         {isAuthenticated ? (
           <ShoppingCart

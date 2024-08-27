@@ -9,15 +9,16 @@ import {
   Cart,
   Cat,
   Checkout,
-  Coll,
   Completed,
   Home,
   Product,
-  Distributor,
   Login,
   NewArrival,
+  NotFound,
+  Detail,
 } from "./Pages/index.js";
 import { AuthLayout } from "./components/index.js";
+import CreatePost from "./Pages/CreatePost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        index: true,
         element: (
           <AuthLayout authentication={false}>
             <Home />
@@ -33,7 +34,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/new-arrival",
+        path: "details/:item",
+        element: (
+          <AuthLayout>
+            <Detail />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "new-arrival",
         element: (
           <AuthLayout authentication={false}>
             <NewArrival />
@@ -45,7 +54,7 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/cart",
+        path: "cart",
         element: (
           <AuthLayout authentication={true}>
             <Cart />
@@ -53,7 +62,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/checkout",
+        path: "create-post",
+        element: (
+          <AuthLayout authentication={true}>
+            <CreatePost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "checkout",
         element: (
           <AuthLayout authentication={true}>
             <Checkout />
@@ -61,15 +78,16 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/completed",
+        path: "completed",
         element: (
           <AuthLayout authentication={true}>
             <Completed />
           </AuthLayout>
         ),
       },
+
       {
-        path: "/products",
+        path: "/products/*",
         element: (
           <AuthLayout authentication={false}>
             <Product />
@@ -77,30 +95,31 @@ const router = createBrowserRouter([
         ),
         children: [
           {
-            path: "categories",
+            index: true,
             element: <Cat />,
           },
           {
-            path: "collections",
-            element: <Coll />,
+            path: "products/categories",
+            element: <Cat />,
           },
           {
             path: "categories/:category",
             element: <Cat />,
           },
           {
+            path: "products/collections",
+            element: <Cat />,
+          },
+          {
             path: "collections/:collection",
-            element: <Coll />,
-          },
-          {
-            path: "distributor",
-            element: <Distributor />,
-          },
-          {
-            path: "distributor/:seller",
-            element: <Distributor />,
+            element: <Cat />,
           },
         ],
+      },
+      // Fallback route
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

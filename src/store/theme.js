@@ -7,7 +7,7 @@ const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
-    darkTheme: (state) => {
+    darkTheme: (statez) => {
       localStorage.setItem("theme", "dark");
       return "dark";
     },

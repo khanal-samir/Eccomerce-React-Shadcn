@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 const CollectionContainer = () => {
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 rounded-lg shadow-md">
       <div className="flex justify-between items-center px-4">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-200">
           Collection

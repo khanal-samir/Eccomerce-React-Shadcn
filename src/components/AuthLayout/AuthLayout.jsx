@@ -31,10 +31,11 @@ export default function Protected({ children, authentication = true }) {
   useEffect(() => {
     if (userFetched) {
       if (authentication && authStatus !== authentication) {
-        navigate("/");
-      } else if (!authentication && authStatus !== authentication) {
-        navigate("/");
+        navigate("/login");
       }
+      // } else if (!authentication && authStatus !== authentication) {
+      //   navigate("/");
+      // }
       setLoader(false);
     }
   }, [authStatus, navigate, authentication, userFetched]);

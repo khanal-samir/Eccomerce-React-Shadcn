@@ -30,7 +30,7 @@ const ProductSidebar = () => {
       {/* Categories */}
       <div className="flex flex-col md:flex-col">
         <NavLink
-          to="categories"
+          to="products/categories"
           className={({ isActive }) =>
             isActive
               ? "text-lg font-bold text-blue-600"
@@ -44,7 +44,7 @@ const ProductSidebar = () => {
       <div className="flex flex-wrap gap-2 md:flex-col md:gap-1 pl-0 md:pl-3">
         {categories.map((category) => (
           <NavLink
-            to={category.to}
+            to={`/products/${category.to}`}
             key={category.name}
             className={({ isActive }) =>
               isActive
@@ -62,7 +62,7 @@ const ProductSidebar = () => {
       {/* Collections */}
       <div className="flex flex-col mt-4 md:flex-col">
         <NavLink
-          to="collections"
+          to="products/collections"
           className={({ isActive }) =>
             isActive
               ? "text-lg font-bold text-blue-600"
@@ -76,7 +76,7 @@ const ProductSidebar = () => {
       <div className="flex flex-wrap gap-2 md:flex-col md:gap-1 pl-0 md:pl-3">
         {collections.map((collection) => (
           <NavLink
-            to={collection.to}
+            to={`/products/${collection.to}`}
             key={collection.name}
             className={({ isActive }) =>
               isActive
@@ -86,38 +86,6 @@ const ProductSidebar = () => {
           >
             <div className="flex items-center space-x-2">
               <h2>{collection.name}</h2>
-            </div>
-          </NavLink>
-        ))}
-      </div>
-
-      {/* Distributors */}
-      <div className="flex flex-col mt-4 md:flex-col">
-        <NavLink
-          to="distributors"
-          className={({ isActive }) =>
-            isActive
-              ? "text-lg font-bold text-blue-600"
-              : "text-lg font-semibold hover:underline"
-          }
-        >
-          <h2>Distributors</h2>
-        </NavLink>
-        <hr className="border-t border-gray-300 dark:border-gray-600 mt-2 mb-3" />
-      </div>
-      <div className="flex flex-wrap gap-2 md:flex-col md:gap-1 pl-0 md:pl-3">
-        {distributors.map((distributor) => (
-          <NavLink
-            to={distributor.to}
-            key={distributor.name}
-            className={({ isActive }) =>
-              isActive
-                ? "text-base text-blue-500 font-medium"
-                : "text-base font-normal hover:underline hover:text-gray-700 dark:hover:text-gray-300"
-            }
-          >
-            <div className="flex items-center space-x-2">
-              <h2>{distributor.name}</h2>
             </div>
           </NavLink>
         ))}

@@ -117,7 +117,10 @@ export default function GetStarted() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full" onClick={handleSubmit(handleLogin)}>
+              <Button
+                className=" w-full  bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700"
+                onClick={handleSubmit(handleLogin)}
+              >
                 Login
               </Button>
             </CardFooter>
@@ -180,7 +183,10 @@ export default function GetStarted() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full" onClick={handleSubmit(handleSignin)}>
+              <Button
+                className="w-full  bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700"
+                onClick={handleSubmit(handleSignin)}
+              >
                 Signup
               </Button>
             </CardFooter>

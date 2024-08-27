@@ -2,17 +2,17 @@ import {
   CategoriesContainer,
   CollectionContainer,
   Featured,
-  Hero,
   NewArrivalContainer,
   WhyChooseUs,
 } from "@/components";
+import HeroCarousel from "./HeroCarousel";
 
 const Home = () => {
   return (
     <div>
-      <Hero />
-      <NewArrivalContainer />
+      <HeroCarousel />
       <CategoriesContainer />
+      <NewArrivalContainer />
       <CollectionContainer />
       <Featured />
       <WhyChooseUs />

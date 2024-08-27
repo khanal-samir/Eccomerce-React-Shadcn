@@ -14,14 +14,6 @@ export function ModeToggle() {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
 
-  // Set the theme on first load
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      dispatch(savedTheme === "dark" ? darkTheme() : lightTheme());
-    }
-  }, [dispatch]);
-
   // Update the theme class and save to local storage on theme change
   useEffect(() => {
     const root = window.document.documentElement;
