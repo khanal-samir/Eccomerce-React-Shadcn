@@ -20,8 +20,8 @@ export class AuthService {
       // Start the OAuth flow (this will redirect the user)
       this.account.createOAuth2Session(
         OAuthProvider.Google,
-        "http://localhost:5173/cart", // Redirect URL on success
-        "http://localhost:5173/fail", // Redirect URL on failure
+        "https://eccomerce-react-shadcn.vercel.app/cart", // Redirect URL on success
+        "https://eccomerce-react-shadcn.vercel.app/fail", // Redirect URL on failure
       );
 
       // Assuming the redirect brings the user back and the page is reloaded:
