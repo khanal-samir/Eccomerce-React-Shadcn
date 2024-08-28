@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       {
         path: "details/:item",
         element: (
-          <AuthLayout authentication={false}>
+          <AuthLayout authentication={true}>
             <Detail />
           </AuthLayout>
         ),
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: "new-arrival",
         element: (
-          <AuthLayout authentication={false}>
+          <AuthLayout authentication={true}>
             <NewArrival />
           </AuthLayout>
         ),
@@ -98,7 +98,7 @@ const router = createBrowserRouter([
       {
         path: "/products/*",
         element: (
-          <AuthLayout authentication={false}>
+          <AuthLayout authentication={true}>
             <Product />
           </AuthLayout>
         ),

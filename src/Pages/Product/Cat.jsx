@@ -23,7 +23,7 @@ const Cat = () => {
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const user = useSelector((state) => state.product.userInfo);
-  console.log(user.$id);
+  //  console.log(user.$id);
 
   useEffect(() => {
     const fetchData = async () => {
