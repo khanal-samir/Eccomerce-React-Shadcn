@@ -6,6 +6,7 @@ import { allProduct } from "@/store/ProductSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HeroCarousel from "./HeroCarousel";
+import { Link } from "react-router-dom";
 
 const NewArrival = () => {
   const [noData, setNoData] = useState(false);
@@ -66,9 +67,11 @@ const NewArrival = () => {
                   {item.Name}
                 </h1>
                 <p className="text-gray-600 mb-4">{`${item.Price} NPR`}</p>
-                <Button className="w-full bg-blue-600 hover:bg-blue-400">
-                  View Details
-                </Button>
+                <Link to={`/details/${item.Name}`}>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-400">
+                    View Details
+                  </Button>
+                </Link>
               </div>
             </div>
           ))

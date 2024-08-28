@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/store/ProductSlice";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function GetStarted() {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ export default function GetStarted() {
         if (response) {
           console.log(response);
           dispatch(login(response));
-          navigate("/cart");
+          navigate("create-post");
+          toast("Successfully logged In ✅");
         }
       }
     } catch (error) {
@@ -50,7 +52,8 @@ export default function GetStarted() {
         const userData = await authService.getCurrentUser();
         if (userData) {
           dispatch(login(userData));
-          navigate("/cart");
+          navigate("/create-post");
+          toast("Successfully Signed In ✅");
         }
       }
     } catch (error) {
@@ -61,11 +64,20 @@ export default function GetStarted() {
 
   const handleOauth = async () => {
     SetError(null);
-    // Initiate the OAuth process and handle the session retrieval in one go
-    const session = await authService.OauthAccount();
-    if (session) {
-      console.log(session);
-      dispatch(login(session.providerUid));
+    try {
+      const session = await authService.OauthAccount();
+      if (session) {
+        console.log(session);
+        dispatch(login(session.providerUid));
+        navigate("/create-post");
+      } else {
+        toast("Sign In Failed ❌");
+      }
+    } catch (error) {
+      SetError("Error signing in with OAuth");
+      console.error(error);
+    } finally {
+      toast("Successfully Signed In ✅");
     }
   };
 

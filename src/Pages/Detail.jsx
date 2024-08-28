@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { setCart } from "@/store/cartSlice";
+import { toast } from "sonner";
 
 const Detail = () => {
   const { item } = useParams();
@@ -14,9 +15,15 @@ const Detail = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const user = useSelector((state) => state.product.userInfo);
 
   const cartClick = (item) => {
+    if (user.$id === item.userId) {
+      toast(`Cannot add your own product to Cart ❌ `);
+      return;
+    }
     dispatch(setCart(item));
+    toast(`${item.Name} added to the cart ✅ `);
   };
 
   useEffect(() => {

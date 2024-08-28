@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateQuantity, removeCart } from "@/store/cartSlice";
 import dbservice from "@/AppwriteConfig/DBconfig";
@@ -13,6 +12,7 @@ import {
   TableRow,
 } from "../ui/table";
 import { X } from "lucide-react";
+import { toast } from "sonner";
 
 const CartBody = () => {
   const cart = useSelector((state) => state.cart.products);
@@ -23,8 +23,9 @@ const CartBody = () => {
     dispatch(updateQuantity({ id, quantity }));
   };
 
-  const handleRemove = (id) => {
-    dispatch(removeCart(id));
+  const handleRemove = (item) => {
+    toast(`${item.Name} has been removed from Cart ✅ `);
+    dispatch(removeCart(item.$id));
   };
 
   return (
@@ -75,7 +76,7 @@ const CartBody = () => {
                 </TableCell>
                 <TableCell className="text-sm text-gray-900 dark:text-gray-300 text-center">
                   <button
-                    onClick={() => handleRemove(item.$id)}
+                    onClick={() => handleRemove(item)}
                     className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300"
                   >
                     <X className="w-6 h-6" />

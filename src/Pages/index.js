@@ -9,6 +9,7 @@ import Login from "./Login";
 import ProductTab from "./Product/Product";
 import NotFound from "./NotFound";
 import Detail from "./Detail";
+import MyProducts from "./MyProducts";
 
 export {
   Home,
@@ -22,4 +23,5 @@ export {
   ProductTab,
   NotFound,
   Detail,
+  MyProducts,
 };

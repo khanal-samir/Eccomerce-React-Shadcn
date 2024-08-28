@@ -3,7 +3,7 @@ import authService from "@/AppwriteConfig/AuthConfig";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "@/store/ProductSlice";
-
+import { toast } from "sonner";
 const Logout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ const Logout = () => {
     await authService.logout();
     dispatch(logout());
     navigate("/");
+    toast("Successfully Logged out  ✅");
     console.log("Logout Successful");
   };
   return (

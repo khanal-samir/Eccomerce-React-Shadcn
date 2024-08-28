@@ -16,13 +16,13 @@ export class DbService {
   }
 
   async createPost({
-    productName,
-    userId,
-    price,
-    category,
-    collection,
-    description,
-    imageUrl,
+    productName = "N/A",
+    userId = null,
+    price = "N/A",
+    category = "jacket",
+    collection = "summer",
+    description = "No description",
+    imageUrl = "No image",
   }) {
     try {
       const product = {
@@ -44,6 +44,28 @@ export class DbService {
       console.log("Appwrite service :: createPost :: error", error);
     }
   }
+  async updatePost({ product, newMessage }) {
+    try {
+      // Extract only the fields that are part of the product schema
+      const updatableFields = {
+        Name: newMessage.Name,
+        Price: newMessage.Price,
+        description: newMessage.description,
+      };
+
+      // Perform the update operation
+      return await this.databases.updateDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
+        product.$id, // Document ID
+        updatableFields, // Only pass the fields that need to be updated
+      );
+    } catch (error) {
+      console.log("Appwrite service :: updatePost:: error", error);
+      throw error;
+    }
+  }
+
   async getPosts({
     category,
     collection,

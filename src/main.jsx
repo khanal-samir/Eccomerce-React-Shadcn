@@ -16,6 +16,7 @@ import {
   NewArrival,
   NotFound,
   Detail,
+  MyProducts,
 } from "./Pages/index.js";
 import { AuthLayout } from "./components/index.js";
 import CreatePost from "./Pages/CreatePost.jsx";
@@ -36,8 +37,16 @@ const router = createBrowserRouter([
       {
         path: "details/:item",
         element: (
-          <AuthLayout>
+          <AuthLayout authentication={false}>
             <Detail />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "myproducts",
+        element: (
+          <AuthLayout authentication={true}>
+            <MyProducts />
           </AuthLayout>
         ),
       },

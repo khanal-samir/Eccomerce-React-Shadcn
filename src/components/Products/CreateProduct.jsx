@@ -1,5 +1,5 @@
 import dbservice from "@/AppwriteConfig/DBconfig";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
@@ -12,12 +12,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "../ui/button";
+import { toast } from "sonner";
 
 const CreateProduct = () => {
   const user = useSelector((state) => state.product.userInfo);
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
-  // const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
 
   const { register, handleSubmit, setValue } = useForm();
 
@@ -44,6 +44,8 @@ const CreateProduct = () => {
         });
 
         console.log(product);
+        navigate(`/details/${data.Name}`);
+        toast("You have successfully added your product ✅");
       }
     } catch (error) {
       alert(error.message);
@@ -71,6 +73,7 @@ const CreateProduct = () => {
               id="name"
               {...register("Name", { required: true })}
               className="w-full mt-2"
+              required
             />
           </div>
 
@@ -84,6 +87,7 @@ const CreateProduct = () => {
               id="price"
               {...register("Price", { required: true })}
               className="w-full mt-2"
+              required
             />
           </div>
 
@@ -97,6 +101,7 @@ const CreateProduct = () => {
             <Select
               id="category"
               onValueChange={(value) => setValue("Category", value)}
+              required
             >
               <SelectTrigger className="w-full mt-2">
                 <SelectValue placeholder="Category" />
@@ -122,6 +127,7 @@ const CreateProduct = () => {
             <Select
               id="collection"
               onValueChange={(value) => setValue("Collection", value)}
+              required
             >
               <SelectTrigger className="w-full mt-2">
                 <SelectValue placeholder="Collection" />
@@ -143,6 +149,7 @@ const CreateProduct = () => {
               Enter Product Description:
             </Label>
             <textarea
+              required
               id="description"
               placeholder="Enter product description"
               {...register("description", { required: true })}
@@ -158,6 +165,7 @@ const CreateProduct = () => {
               Upload Product Image:
             </Label>
             <Input
+              required
               type="file"
               {...register("imageUrl", { required: true })}
               className="w-full mt-2"

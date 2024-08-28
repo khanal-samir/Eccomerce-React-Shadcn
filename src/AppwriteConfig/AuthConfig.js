@@ -18,7 +18,7 @@ export class AuthService {
   async OauthAccount() {
     try {
       // Start the OAuth flow (this will redirect the user)
-      await this.account.createOAuth2Session(
+      this.account.createOAuth2Session(
         OAuthProvider.Google,
         "http://localhost:5173/cart", // Redirect URL on success
         "http://localhost:5173/fail", // Redirect URL on failure

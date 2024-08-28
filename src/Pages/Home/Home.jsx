@@ -9,7 +9,7 @@ import HeroCarousel from "./HeroCarousel";
 
 const Home = () => {
   return (
-    <div>
+    <div className="w-full">
       <HeroCarousel />
       <CategoriesContainer />
       <NewArrivalContainer />

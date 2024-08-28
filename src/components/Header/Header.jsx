@@ -34,12 +34,17 @@ const Header = () => {
           </h2>
         </Link>
         <Collection />
+        {user ? (
+          <h1 className="text-gray-800 dark:text-gray-300 font-sans ">
+            <Link to="myproducts">
+              <h2 className="text-base font-medium text-gray-800 dark:text-gray-200">
+                {user.name} Products
+              </h2>
+            </Link>
+          </h1>
+        ) : null}
       </div>
-      {user ? (
-        <h1 className="text-gray-800 dark:text-gray-300 font-sans ">
-          Welcome, <span className="font-semibold">{user.name}</span>
-        </h1>
-      ) : null}
+
       <div className="flex items-center gap-4 ">
         {isAuthenticated ? (
           <ShoppingCart
