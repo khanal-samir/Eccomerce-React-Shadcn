@@ -25,8 +25,8 @@ export class AuthService {
       );
 
       // Assuming the redirect brings the user back and the page is reloaded:
-      const session = await this.account.getSession("current");
-      return session;
+      const user = await this.getCurrentUser();
+      return user;
     } catch (error) {
       console.log("Appwrite service :: OauthAccount :: error", error);
       throw error;
