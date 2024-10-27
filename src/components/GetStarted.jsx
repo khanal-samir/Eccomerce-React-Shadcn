@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import authService from "@/AppwriteConfig/AuthConfig";
 import { useDispatch } from "react-redux";
@@ -57,29 +57,30 @@ export default function GetStarted() {
         }
       }
     } catch (error) {
+      toast(`❌ ${error.message}`);
       console.log(error);
       SetError(error.message);
     }
   };
 
-  const handleOauth = async () => {
-    SetError(null);
-    try {
-      const session = await authService.OauthAccount();
-      if (session) {
-        console.log(session);
-        dispatch(login(session.providerUid));
-        navigate("/create-post");
-      } else {
-        toast("Sign In Failed ❌");
-      }
-    } catch (error) {
-      SetError("Error signing in with OAuth");
-      console.error(error);
-    } finally {
-      toast("Successfully Signed In ✅");
-    }
-  };
+  // const handleOauth = async () => {
+  //   SetError(null);
+  //   try {
+  //     const session = await authService.OauthAccount();
+  //     if (session) {
+  //       console.log(session);
+  //       dispatch(login(session.providerUid));
+  //       navigate("/create-post");
+  //     } else {
+  //       toast("Sign In Failed ❌");
+  //     }
+  //   } catch (error) {
+  //     SetError("Error signing in with OAuth");
+  //     console.error(error);
+  //   } finally {
+  //     toast("Successfully Signed In ✅");
+  //   }
+  // };
 
   return (
     <div className="flex flex-row items-center justify-center min-h-fit bg-slate-200 dark:bg-slate-600 p-4">
@@ -136,7 +137,7 @@ export default function GetStarted() {
                 Login
               </Button>
             </CardFooter>
-            <CardFooter>
+            {/* <CardFooter>
               <Button
                 variant="outline"
                 className="w-full text-white bg-green-600 hover:bg-green-700"
@@ -145,7 +146,7 @@ export default function GetStarted() {
                 <FcGoogle className="mr-2" />
                 Login with Google
               </Button>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </TabsContent>
         <TabsContent value="Signup">
@@ -202,7 +203,7 @@ export default function GetStarted() {
                 Signup
               </Button>
             </CardFooter>
-            <CardFooter>
+            {/* <CardFooter>
               <Button
                 variant="outline"
                 className="w-full text-white bg-green-600 hover:bg-green-700"
@@ -211,7 +212,7 @@ export default function GetStarted() {
                 <FcGoogle className="mr-2" />
                 Signup with Google
               </Button>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </TabsContent>
       </Tabs>
